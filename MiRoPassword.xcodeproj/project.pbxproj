@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A5979891E166110006C68CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5979881E166110006C68CF /* AppDelegate.swift */; };
+		1A59798B1E166110006C68CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59798A1E166110006C68CF /* ViewController.swift */; };
+		1A59798E1E166110006C68CF /* MiRoPassword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A59798C1E166110006C68CF /* MiRoPassword.xcdatamodeld */; };
+		1A5979901E166110006C68CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A59798F1E166110006C68CF /* Assets.xcassets */; };
+		1A5979931E166110006C68CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5979911E166110006C68CF /* Main.storyboard */; };
+		1A59799D1E16656D006C68CF /* PasswordItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59799B1E16656D006C68CF /* PasswordItem+CoreDataClass.swift */; };
+		1A59799E1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59799C1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift */; };
+		6088FD212623312319DB81ED /* Pods_MiRoPassword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6777C273ECBA0584280D6BE3 /* Pods_MiRoPassword.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A5979851E166110006C68CF /* MiRoPassword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiRoPassword.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A5979881E166110006C68CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1A59798A1E166110006C68CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1A59798D1E166110006C68CF /* MiRoPassword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiRoPassword.xcdatamodel; sourceTree = "<group>"; };
+		1A59798F1E166110006C68CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A5979921E166110006C68CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1A5979941E166110006C68CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A59799B1E16656D006C68CF /* PasswordItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PasswordItem+CoreDataClass.swift"; path = "Data/PasswordItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1A59799C1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PasswordItem+CoreDataProperties.swift"; path = "Data/PasswordItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6777C273ECBA0584280D6BE3 /* Pods_MiRoPassword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiRoPassword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D83EABB439A4126585A16BD0 /* Pods-MiRoPassword.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiRoPassword.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiRoPassword/Pods-MiRoPassword.debug.xcconfig"; sourceTree = "<group>"; };
+		FE84955D5641383FEE2DA07B /* Pods-MiRoPassword.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiRoPassword.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiRoPassword/Pods-MiRoPassword.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A5979821E166110006C68CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6088FD212623312319DB81ED /* Pods_MiRoPassword.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A59797C1E166110006C68CF = {
+			isa = PBXGroup;
+			children = (
+				1A5979871E166110006C68CF /* MiRoPassword */,
+				1A5979861E166110006C68CF /* Products */,
+				F60C5C60334770C8C2E47CE9 /* Pods */,
+				F76C58DBE3FA5C545A5A0B03 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1A5979861E166110006C68CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A5979851E166110006C68CF /* MiRoPassword.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A5979871E166110006C68CF /* MiRoPassword */ = {
+			isa = PBXGroup;
+			children = (
+				1A59799A1E166567006C68CF /* Data */,
+				1A5979881E166110006C68CF /* AppDelegate.swift */,
+				1A59798A1E166110006C68CF /* ViewController.swift */,
+				1A59798F1E166110006C68CF /* Assets.xcassets */,
+				1A5979911E166110006C68CF /* Main.storyboard */,
+				1A5979941E166110006C68CF /* Info.plist */,
+				1A59798C1E166110006C68CF /* MiRoPassword.xcdatamodeld */,
+			);
+			path = MiRoPassword;
+			sourceTree = "<group>";
+		};
+		1A59799A1E166567006C68CF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1A59799B1E16656D006C68CF /* PasswordItem+CoreDataClass.swift */,
+				1A59799C1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		F60C5C60334770C8C2E47CE9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D83EABB439A4126585A16BD0 /* Pods-MiRoPassword.debug.xcconfig */,
+				FE84955D5641383FEE2DA07B /* Pods-MiRoPassword.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F76C58DBE3FA5C545A5A0B03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6777C273ECBA0584280D6BE3 /* Pods_MiRoPassword.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A5979841E166110006C68CF /* MiRoPassword */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A5979971E166110006C68CF /* Build configuration list for PBXNativeTarget "MiRoPassword" */;
+			buildPhases = (
+				E88FE12FFD1D9533FCE178F2 /* [CP] Check Pods Manifest.lock */,
+				1A5979811E166110006C68CF /* Sources */,
+				1A5979821E166110006C68CF /* Frameworks */,
+				1A5979831E166110006C68CF /* Resources */,
+				04F806148D3E60D2C11F1002 /* [CP] Embed Pods Frameworks */,
+				331CF220CC7BE7182600A205 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiRoPassword;
+			productName = MiRoPassword;
+			productReference = 1A5979851E166110006C68CF /* MiRoPassword.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A59797D1E166110006C68CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "MiRo Soft";
+				TargetAttributes = {
+					1A5979841E166110006C68CF = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 45U4U6SXCJ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1A5979801E166110006C68CF /* Build configuration list for PBXProject "MiRoPassword" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A59797C1E166110006C68CF;
+			productRefGroup = 1A5979861E166110006C68CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A5979841E166110006C68CF /* MiRoPassword */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A5979831E166110006C68CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A5979901E166110006C68CF /* Assets.xcassets in Resources */,
+				1A5979931E166110006C68CF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04F806148D3E60D2C11F1002 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiRoPassword/Pods-MiRoPassword-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		331CF220CC7BE7182600A205 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiRoPassword/Pods-MiRoPassword-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E88FE12FFD1D9533FCE178F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A5979811E166110006C68CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A59798B1E166110006C68CF /* ViewController.swift in Sources */,
+				1A5979891E166110006C68CF /* AppDelegate.swift in Sources */,
+				1A59799D1E16656D006C68CF /* PasswordItem+CoreDataClass.swift in Sources */,
+				1A59798E1E166110006C68CF /* MiRoPassword.xcdatamodeld in Sources */,
+				1A59799E1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1A5979911E166110006C68CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A5979921E166110006C68CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1A5979951E166110006C68CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1A5979961E166110006C68CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		1A5979981E166110006C68CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D83EABB439A4126585A16BD0 /* Pods-MiRoPassword.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 45U4U6SXCJ;
+				INFOPLIST_FILE = MiRoPassword/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MiRo.MiRoPassword;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1A5979991E166110006C68CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE84955D5641383FEE2DA07B /* Pods-MiRoPassword.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 45U4U6SXCJ;
+				INFOPLIST_FILE = MiRoPassword/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MiRo.MiRoPassword;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A5979801E166110006C68CF /* Build configuration list for PBXProject "MiRoPassword" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A5979951E166110006C68CF /* Debug */,
+				1A5979961E166110006C68CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A5979971E166110006C68CF /* Build configuration list for PBXNativeTarget "MiRoPassword" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A5979981E166110006C68CF /* Debug */,
+				1A5979991E166110006C68CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1A59798C1E166110006C68CF /* MiRoPassword.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1A59798D1E166110006C68CF /* MiRoPassword.xcdatamodel */,
+			);
+			currentVersion = 1A59798D1E166110006C68CF /* MiRoPassword.xcdatamodel */;
+			path = MiRoPassword.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1A59797D1E166110006C68CF /* Project object */;
+}
