@@ -10,8 +10,12 @@ import Cocoa
 
 class ItemsViewController: NSViewController {
     
+    var idleTimer: Timer?
+    var idleCounter: Int32 = 10
+    
     @IBOutlet weak var tableView: NSTableView?
     @IBOutlet weak var statusLabel: NSTextField?
+    @IBOutlet weak var idleProgress: NSLevelIndicator?
     
     var passwordItems: [PasswordItem]? = []
     var passwordItemManager: PasswordItemManager?
@@ -23,7 +27,21 @@ class ItemsViewController: NSViewController {
         let context = self.appDelegate.managedObjectContext
         self.passwordItemManager = PasswordItemManager.init(managedObjectContext: context)
         
+        self.idleTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ItemsViewController.updateCounter), userInfo: nil, repeats: true)
+        self.idleProgress?.intValue = 10
+        
         self.reloadPasswordList()
+    }
+    
+    func updateCounter() {
+        print("updateCounter \(self.idleCounter)")
+        
+        self.idleCounter -= 1
+        self.idleProgress?.intValue = self.idleCounter
+        
+        if self.idleCounter <= 0 {
+            self.closeAction(nil)
+        }
     }
     
     func reloadPasswordList() {
@@ -33,8 +51,18 @@ class ItemsViewController: NSViewController {
         self.tableView?.reloadData()
     }
     
+    @IBAction func doubleClickAction(_ sender: AnyObject?) {
+        print("click: ")
+        
+        self.idleCounter = 10
+        self.idleProgress?.intValue = self.idleCounter
+    }
+    
     @IBAction func addPasswordAction(_ sender: AnyObject?) {
         print("add: ")
+        
+        self.idleCounter = 10
+        self.idleProgress?.intValue = self.idleCounter
         
         self.passwordItemManager?.createPasswordItem(withName: "abc")
         
@@ -44,6 +72,7 @@ class ItemsViewController: NSViewController {
     @IBAction func closeAction(_ sender: AnyObject?) {
         print("close: ")
         
+        self.idleTimer?.invalidate()
         self.dismiss(nil)
     }
 
@@ -101,5 +130,4 @@ extension ItemsViewController: NSTableViewDelegate {
         }
         return nil
     }
-    
 }
