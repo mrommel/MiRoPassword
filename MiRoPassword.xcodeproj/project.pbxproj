@@ -8,25 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		1A5979891E166110006C68CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5979881E166110006C68CF /* AppDelegate.swift */; };
-		1A59798B1E166110006C68CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59798A1E166110006C68CF /* ViewController.swift */; };
+		1A59798B1E166110006C68CF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59798A1E166110006C68CF /* LoginViewController.swift */; };
 		1A59798E1E166110006C68CF /* MiRoPassword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A59798C1E166110006C68CF /* MiRoPassword.xcdatamodeld */; };
 		1A5979901E166110006C68CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A59798F1E166110006C68CF /* Assets.xcassets */; };
 		1A5979931E166110006C68CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5979911E166110006C68CF /* Main.storyboard */; };
-		1A59799D1E16656D006C68CF /* PasswordItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59799B1E16656D006C68CF /* PasswordItem+CoreDataClass.swift */; };
-		1A59799E1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59799C1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift */; };
+		1A69C5371E1C541F00117D0B /* PasswordItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C5351E1C541F00117D0B /* PasswordItem+CoreDataClass.swift */; };
+		1A69C5381E1C541F00117D0B /* PasswordItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C5361E1C541F00117D0B /* PasswordItem+CoreDataProperties.swift */; };
+		1A69C53B1E1CF7F600117D0B /* safe.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A69C53A1E1CF7F600117D0B /* safe.png */; };
+		1A69C53E1E1CFEEE00117D0B /* NSViewController+AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C53D1E1CFEEE00117D0B /* NSViewController+AppDelegate.swift */; };
 		6088FD212623312319DB81ED /* Pods_MiRoPassword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6777C273ECBA0584280D6BE3 /* Pods_MiRoPassword.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A5979851E166110006C68CF /* MiRoPassword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiRoPassword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5979881E166110006C68CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1A59798A1E166110006C68CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1A59798A1E166110006C68CF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1A59798D1E166110006C68CF /* MiRoPassword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiRoPassword.xcdatamodel; sourceTree = "<group>"; };
 		1A59798F1E166110006C68CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A5979921E166110006C68CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A5979941E166110006C68CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A59799B1E16656D006C68CF /* PasswordItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PasswordItem+CoreDataClass.swift"; path = "Data/PasswordItem+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A59799C1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PasswordItem+CoreDataProperties.swift"; path = "Data/PasswordItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1A69C52D1E1C4B3400117D0B /* MiRoPassword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiRoPassword-Bridging-Header.h"; sourceTree = "<group>"; };
+		1A69C5351E1C541F00117D0B /* PasswordItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PasswordItem+CoreDataClass.swift"; path = "Data/PasswordItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1A69C5361E1C541F00117D0B /* PasswordItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PasswordItem+CoreDataProperties.swift"; path = "Data/PasswordItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1A69C53A1E1CF7F600117D0B /* safe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = safe.png; path = Resources/safe.png; sourceTree = "<group>"; };
+		1A69C53D1E1CFEEE00117D0B /* NSViewController+AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSViewController+AppDelegate.swift"; path = "Extensions/NSViewController+AppDelegate.swift"; sourceTree = "<group>"; };
 		6777C273ECBA0584280D6BE3 /* Pods_MiRoPassword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiRoPassword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83EABB439A4126585A16BD0 /* Pods-MiRoPassword.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiRoPassword.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiRoPassword/Pods-MiRoPassword.debug.xcconfig"; sourceTree = "<group>"; };
 		FE84955D5641383FEE2DA07B /* Pods-MiRoPassword.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiRoPassword.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiRoPassword/Pods-MiRoPassword.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,13 +70,16 @@
 		1A5979871E166110006C68CF /* MiRoPassword */ = {
 			isa = PBXGroup;
 			children = (
+				1A69C53C1E1CFECB00117D0B /* Extensions */,
 				1A59799A1E166567006C68CF /* Data */,
 				1A5979881E166110006C68CF /* AppDelegate.swift */,
-				1A59798A1E166110006C68CF /* ViewController.swift */,
+				1A59798A1E166110006C68CF /* LoginViewController.swift */,
 				1A59798F1E166110006C68CF /* Assets.xcassets */,
 				1A5979911E166110006C68CF /* Main.storyboard */,
 				1A5979941E166110006C68CF /* Info.plist */,
 				1A59798C1E166110006C68CF /* MiRoPassword.xcdatamodeld */,
+				1A69C52D1E1C4B3400117D0B /* MiRoPassword-Bridging-Header.h */,
+				1A69C5391E1CF7E700117D0B /* Resources */,
 			);
 			path = MiRoPassword;
 			sourceTree = "<group>";
@@ -79,10 +87,26 @@
 		1A59799A1E166567006C68CF /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1A59799B1E16656D006C68CF /* PasswordItem+CoreDataClass.swift */,
-				1A59799C1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift */,
+				1A69C5351E1C541F00117D0B /* PasswordItem+CoreDataClass.swift */,
+				1A69C5361E1C541F00117D0B /* PasswordItem+CoreDataProperties.swift */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		1A69C5391E1CF7E700117D0B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A69C53A1E1CF7F600117D0B /* safe.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1A69C53C1E1CFECB00117D0B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A69C53D1E1CFEEE00117D0B /* NSViewController+AppDelegate.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		F60C5C60334770C8C2E47CE9 /* Pods */ = {
@@ -138,6 +162,7 @@
 					1A5979841E166110006C68CF = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 45U4U6SXCJ;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -167,6 +192,7 @@
 			files = (
 				1A5979901E166110006C68CF /* Assets.xcassets in Resources */,
 				1A5979931E166110006C68CF /* Main.storyboard in Resources */,
+				1A69C53B1E1CF7F600117D0B /* safe.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,11 +251,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A59798B1E166110006C68CF /* ViewController.swift in Sources */,
+				1A59798B1E166110006C68CF /* LoginViewController.swift in Sources */,
 				1A5979891E166110006C68CF /* AppDelegate.swift in Sources */,
-				1A59799D1E16656D006C68CF /* PasswordItem+CoreDataClass.swift in Sources */,
 				1A59798E1E166110006C68CF /* MiRoPassword.xcdatamodeld in Sources */,
-				1A59799E1E16656D006C68CF /* PasswordItem+CoreDataProperties.swift in Sources */,
+				1A69C5371E1C541F00117D0B /* PasswordItem+CoreDataClass.swift in Sources */,
+				1A69C53E1E1CFEEE00117D0B /* NSViewController+AppDelegate.swift in Sources */,
+				1A69C5381E1C541F00117D0B /* PasswordItem+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,12 +369,15 @@
 			baseConfigurationReference = D83EABB439A4126585A16BD0 /* Pods-MiRoPassword.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 45U4U6SXCJ;
 				INFOPLIST_FILE = MiRoPassword/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MiRo.MiRoPassword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MiRoPassword/MiRoPassword-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -357,12 +387,14 @@
 			baseConfigurationReference = FE84955D5641383FEE2DA07B /* Pods-MiRoPassword.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 45U4U6SXCJ;
 				INFOPLIST_FILE = MiRoPassword/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MiRo.MiRoPassword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MiRoPassword/MiRoPassword-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

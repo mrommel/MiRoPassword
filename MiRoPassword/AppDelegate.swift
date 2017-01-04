@@ -7,35 +7,22 @@
 //
 
 import Cocoa
+import EncryptedCoreData
+
+enum EncryptionError: Error {
+    case WrongPassword
+    case FolderIsFile
+    case Obvious(String)
+}
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    var dbPassword: String = ""
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        // insert a few objects if we don't have any
-        {
-            NSManagedObjectContext *context = [ISDAppDelegate managedObjectContext];
-            NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"User"];
-            NSUInteger count = [context countForFetchRequest:request error:nil];
-            if (count == 0) {
-                NSArray *array = [NSArray arrayWithObjects:@"Gregg", @"Jon", @"Jase", @"Gavin", nil];
-                [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                NSManagedObject *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
-                [user setValue:obj forKey:@"name"];
-                for (NSInteger i = 0; i < 3; i++) {
-                NSManagedObject *post = [NSEntityDescription insertNewObjectForEntityForName:@"Post" inManagedObjectContext:context];
-                [post setValue:@"Test Title" forKey:@"title"];
-                [post setValue:@"Test body" forKey:@"body"];
-                [post setValue:user forKey:@"user"];
-                }
-                }];
-                [context save:nil];
-            }
-        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -48,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.apple.toolsQA.CocoaApp_CD" in the user's Application Support directory.
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
         let appSupportURL = urls[urls.count - 1]
-        return appSupportURL.appendingPathComponent("com.apple.toolsQA.CocoaApp_CD")
+        return appSupportURL.appendingPathComponent("com.miro.password")
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -58,63 +45,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }()
 
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.) This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
-        let fileManager = FileManager.default
-        var failError: NSError? = nil
-        var shouldFail = false
-        var failureReason = "There was an error creating or loading the application's saved data."
-
-        // Make sure the application files directory is there
-        do {
-            let properties = try self.applicationDocumentsDirectory.resourceValues(forKeys: [URLResourceKey.isDirectoryKey])
-            if !properties.isDirectory! {
-                failureReason = "Expected a folder to store application data, found a file \(self.applicationDocumentsDirectory.path)."
-                shouldFail = true
-            }
-        } catch  {
-            let nserror = error as NSError
-            if nserror.code == NSFileReadNoSuchFileError {
-                do {
-                    try fileManager.createDirectory(atPath: self.applicationDocumentsDirectory.path, withIntermediateDirectories: true, attributes: nil)
-                } catch {
-                    failError = nserror
-                }
-            } else {
-                failError = nserror
-            }
-        }
         
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = nil
-        if failError == nil {
-            coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-            let url = self.applicationDocumentsDirectory.appendingPathComponent("MiRoPassword.storedata")
-            do {
-                try coordinator!.addPersistentStore(ofType: NSXMLStoreType, configurationName: nil, at: url, options: nil)
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                failError = error as NSError
-            }
+        do {
+            let appDelegate = NSApplication.shared().delegate as! AppDelegate
+            coordinator = try appDelegate.verifyPassword()
+        } catch EncryptionError.FolderIsFile {
+            print("could not create database because the requested folder is a file")
+        } catch EncryptionError.WrongPassword {
+            print("could not open existing database because the provided password is wrong")
+        } catch {
+            print("something went wrong")
         }
-        
-        if shouldFail || (failError != nil) {
-            // Report any error we got.
-            if let error = failError {
-                NSApplication.shared().presentError(error)
-                fatalError("Unresolved error: \(error), \(error.userInfo)")
-            }
-            fatalError("Unsresolved error: \(failureReason)")
-        } else {
-            return coordinator!
-        }
+ 
+        return coordinator!
     }()
 
     lazy var managedObjectContext: NSManagedObjectContext = {
@@ -124,6 +69,64 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
+    
+    func verifyPassword() throws -> NSPersistentStoreCoordinator? {
+        
+        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.) This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
+        let fileManager = FileManager.default
+        
+        // Make sure the application files directory is there
+        do {
+            let properties = try self.applicationDocumentsDirectory.resourceValues(forKeys: [URLResourceKey.isDirectoryKey])
+            if !properties.isDirectory! {
+                //failureReason = "Expected a folder to store application data, found a file \(self.applicationDocumentsDirectory.path)."
+                throw EncryptionError.FolderIsFile
+            }
+        } catch  {
+            let nserror = error as NSError
+            if nserror.code == NSFileReadNoSuchFileError {
+                do {
+                    try fileManager.createDirectory(atPath: self.applicationDocumentsDirectory.path, withIntermediateDirectories: true, attributes: nil)
+                } catch {
+                    throw EncryptionError.Obvious("Could not create directory: \(self.applicationDocumentsDirectory.path)")
+                }
+            } else {
+                throw EncryptionError.Obvious("There was an error creating or loading the application's saved data.") // provide a better error
+            }
+        }
+        
+        // Create the coordinator and store
+        var coordinator: NSPersistentStoreCoordinator? = nil
+        coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("MiRoPassword.sqlite")
+        do {
+            //try coordinator!.addPersistentStore(ofType: NSXMLStoreType, configurationName: nil, at: url, options: nil)
+            
+            let options = [
+                EncryptedStorePassphraseKey : self.dbPassword,
+                NSInferMappingModelAutomaticallyOption : true
+                ] as [AnyHashable : Any]
+            try coordinator!.addPersistentStore(ofType: EncryptedStoreType, configurationName: nil, at: url, options: options)
+        } catch {
+            let nserror = error as NSError
+            
+            /*
+             Typical reasons for an error here include:
+             * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+             * The device is out of space.
+             * The store could not be migrated to the current model version.
+             Check the error message to determine what the actual problem was.
+             */
+            
+            if nserror.code == 6000 {
+                throw EncryptionError.WrongPassword
+            }
+            
+            throw EncryptionError.Obvious("generic")
+        }
+        
+        return coordinator
+    }
 
     // MARK: - Core Data Saving and Undo support
 

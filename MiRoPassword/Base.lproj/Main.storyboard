@@ -4,6 +4,7 @@
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -664,7 +665,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="MiRoPasswordSafe" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -678,34 +679,91 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MiRoPassword" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" misplaced="YES" id="m2S-Jp-Qdl">
+                <viewController id="XfG-lQ-9wD" customClass="LoginViewController" customModule="MiRoPassword" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAv-yh-A9g">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="MiRoPassword" id="4P2-Ua-tj2">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rmF-t0-M1f">
+                                <rect key="frame" x="2" y="34" width="480" height="236"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAv-yh-A9g">
+                                        <rect key="frame" x="-2" y="219" width="484" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="MiRoPassword" id="4P2-Ua-tj2">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cco-oC-B1O">
+                                        <rect key="frame" x="0.0" y="83" width="480" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="n4g-fg-Sod"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="safe" id="1H9-vG-PqG"/>
+                                    </imageView>
+                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8i-Fw-uxM">
+                                        <rect key="frame" x="0.0" y="53" width="96" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="password" drawsBackground="YES" id="VIN-rK-5g6">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="crY-4j-FEg">
+                                        <rect key="frame" x="-6" y="17" width="74" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qjn-SA-T9O">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <connections>
+                                                <action selector="loginAction:" target="XfG-lQ-9wD" id="Eqx-sl-Dhg"/>
+                                            </connections>
+                                        </buttonCell>
+                                    </button>
+                                    <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ARn-EU-Ngv">
+                                        <rect key="frame" x="0.0" y="-2" width="96" height="18"/>
+                                        <levelIndicatorCell key="cell" alignment="left" doubleValue="2" maxValue="2" warningValue="2" criticalValue="2" id="c1t-n4-ztj"/>
+                                    </levelIndicator>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Cco-oC-B1O" firstAttribute="width" secondItem="rmF-t0-M1f" secondAttribute="width" id="Rz6-of-e5f"/>
+                                    <constraint firstItem="IAv-yh-A9g" firstAttribute="width" secondItem="rmF-t0-M1f" secondAttribute="width" id="ek3-Bp-hOa"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="IAv-yh-A9g" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="2vk-SE-nAj"/>
-                            <constraint firstItem="IAv-yh-A9g" firstAttribute="trailing" secondItem="m2S-Jp-Qdl" secondAttribute="trailing" id="F4g-F2-G2n"/>
-                            <constraint firstItem="IAv-yh-A9g" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Lxh-5W-VnG"/>
-                            <constraint firstItem="IAv-yh-A9g" firstAttribute="bottom" secondItem="m2S-Jp-Qdl" secondAttribute="bottom" id="WnS-zk-pRb"/>
+                            <constraint firstAttribute="trailing" secondItem="rmF-t0-M1f" secondAttribute="trailing" constant="-2" id="BfZ-WA-b8i"/>
+                            <constraint firstItem="rmF-t0-M1f" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="OOk-t0-vkb"/>
+                            <constraint firstItem="rmF-t0-M1f" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="2" id="U3N-OP-bU3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginTextField" destination="K8i-Fw-uxM" id="svP-iI-TZQ"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="safe" width="256" height="256"/>
+    </resources>
 </document>
