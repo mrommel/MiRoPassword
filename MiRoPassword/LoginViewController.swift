@@ -16,21 +16,6 @@ class LoginViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        /*
-        //self.appDelegate.dbPassword = "DB_KEY_HERE"
-        let context = self.appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PasswordItem")
-        //let itemsFetch = PasswordItem.fetchRequest()
-        
-        do {
-            let fetchedItems = try context.fetch(fetchRequest)
-            
-            print("results: \(fetchedItems.count)")
-        } catch {
-            fatalError("Failed to fetch employees: \(error)")
-        }*/
     }
     
     @IBAction func loginAction(_ sender: AnyObject?) {

@@ -787,8 +787,8 @@
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn width="475" minWidth="40" maxWidth="1000" id="Ggc-uc-jS8">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                        <tableColumn identifier="NameCellID" width="475" minWidth="40" maxWidth="1000" id="Ggc-uc-jS8">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -825,6 +825,10 @@
                                                             </prototypeCellViews>
                                                         </tableColumn>
                                                     </tableColumns>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="mSt-2v-nt6" id="uiY-0U-VEm"/>
+                                                        <outlet property="delegate" destination="mSt-2v-nt6" id="SMA-vG-bCn"/>
+                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                         </clipView>
@@ -841,11 +845,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylr-A1-tvF">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="21"/>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylr-A1-tvF">
+                                        <rect key="frame" x="0.0" y="0.0" width="252" height="21"/>
                                         <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7tI-DQ-Mjc">
+                                                <rect key="frame" x="-6" y="-7" width="126" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Add Password" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="skX-pI-hFD">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <connections>
+                                                        <action selector="addPasswordAction:" target="mSt-2v-nt6" id="ZcK-4q-I3v"/>
+                                                    </connections>
+                                                </buttonCell>
+                                            </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqh-Wh-dzP">
-                                                <rect key="frame" x="-2" y="4" width="55" height="17"/>
+                                                <rect key="frame" x="120" y="4" width="55" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="10 Items" id="BNL-yc-pVs">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -853,7 +867,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qv7-56-v6w">
-                                                <rect key="frame" x="53" y="-7" width="83" height="32"/>
+                                                <rect key="frame" x="175" y="-7" width="83" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Logout" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oyb-uX-xbF">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -866,8 +880,10 @@
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
@@ -890,6 +906,9 @@
                             <constraint firstItem="0mh-jl-WQr" firstAttribute="top" secondItem="I3e-c0-T3p" secondAttribute="top" id="euc-LF-7rw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="statusLabel" destination="Bqh-Wh-dzP" id="fzF-db-S2s"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="75" y="1015.5"/>
