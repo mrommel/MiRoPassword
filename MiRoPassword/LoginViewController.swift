@@ -37,16 +37,17 @@ class LoginViewController: NSViewController {
         print("login: \((self.loginTextField?.stringValue)!)")
         
         self.appDelegate.dbPassword = (self.loginTextField?.stringValue)!
+        self.loginTextField?.stringValue = ""
         
         do {
             _ = try self.appDelegate.verifyPassword()
             
             print("great")
+            
+            self.presentItemsViewController()
         } catch {
             print("wrong")
         }
-            
-        //let context = self.appDelegate.managedObjectContext
     }
 
 }

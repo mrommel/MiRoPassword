@@ -9,7 +9,15 @@
 import Cocoa
 
 extension NSViewController {
+    
     var appDelegate: AppDelegate {
         return NSApplication.shared().delegate as! AppDelegate
+    }
+    
+    func presentItemsViewController() {
+        let storyboard :NSStoryboard? = NSStoryboard(name: "Main", bundle: nil)
+        let itemsViewController  = storyboard?.instantiateController(withIdentifier: "ItemsViewController") as! ItemsViewController?
+        
+        self.presentViewControllerAsSheet(itemsViewController!)
     }
 }
