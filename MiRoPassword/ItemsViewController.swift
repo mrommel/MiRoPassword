@@ -8,6 +8,7 @@
 
 import Cocoa
 import SwiftyDropbox
+import SwiftyJSON
 
 class ItemsViewController: NSViewController {
     
@@ -35,26 +36,9 @@ class ItemsViewController: NSViewController {
             DropboxClientsManager.reauthorizeClient(dropboxToken.username!)
             
             // Check if the user is logged in
-            // If so, try to load dropbox file
-            if let client = DropboxClientsManager.authorizedClient {
-                
+            if DropboxClientsManager.authorizedClient != nil {
                 self.syncButton?.isEnabled = true
                 self.dropboxButton?.title = "Unlink Dropbox"
-                
-                // List contents of app folder
-                _ = client.files.listFolder(path: "").response { response, error in
-                    if let result = response {
-                        print("Folder contents:")
-                        for entry in result.entries {
-                            print(entry.name)
-                            
-                            // Check that file is an encrypted db (by file extension)
-                            if entry.name.hasSuffix(".enc") {
-                                //self.filenames?.append(entry.name)
-                            }
-                        }
-                    }
-                }
             }
         }
         
@@ -62,18 +46,17 @@ class ItemsViewController: NSViewController {
         self.idleProgress?.intValue = 100
         
         // test
-        print("raw: lorem ipsom")
+        /*print("raw: lorem ipsom")
         let encryptionManager = EncryptionManager.init()
         let txt = encryptionManager.encrypt("lorem ipsom")
         let txt2 = encryptionManager.decrypt(txt)
-        print("decrypted: \(txt2)")
+        print("decrypted: \(txt2)")*/
         
         self.reloadPasswordList()
     }
     
     func updateCounter() {
-        print("updateCounter \(self.idleCounter)")
-        
+
         self.idleCounter -= 1
         self.idleProgress?.intValue = self.idleCounter
         
@@ -104,6 +87,88 @@ class ItemsViewController: NSViewController {
         print("sync: ")
         
         self.resetCounter()
+        
+        self.downloadFromDropbox()
+    }
+    
+    func downloadFromDropbox() {
+        
+        if let dropboxToken = self.passwordItemManager?.getPasswordItem(withName: PasswordItemManager.dropboxToken) {
+            
+            DropboxClientsManager.reauthorizeClient(dropboxToken.username!)
+            
+            // Check if the user is logged in
+            // If so, try to load dropbox file
+            if let client = DropboxClientsManager.authorizedClient {
+                
+                // Download to Data
+                client.files.download(path: "/db.json.enc").response { response, error in
+                        if let response = response {
+                            
+                            let fileContents = response.1
+                            //print(fileContents.bytes)
+                            
+                            let encryptionManager = EncryptionManager.init()
+                            let fileContent = encryptionManager.decrypt(fileContents.bytes.toRawString())
+                            print("content from backend: #\(fileContent)#")
+                            
+                            // parse data from backend
+                            //var finalJSON = JSON(data: encodedString!)
+                            if var data = fileContent.data(using: String.Encoding.utf8) {
+                                
+                                data.removeLast(8)
+
+                                let jsonObject = JSON(data: data)
+                                print("worked +\(jsonObject)+")
+                            }
+                            
+                            // merge
+                            
+                            self.uploadToDropbox()
+                            
+                            
+                        } else if let error = error {
+                            //print(error)
+                            
+                            // create the file
+                        }
+                    }
+                    .progress { progressData in
+                        //print(progressData)
+                    }
+            }
+        }
+    }
+    
+    func uploadToDropbox() {
+        
+        let dropboxObject = JSON(self.passwordItemManager?.getPasswordItemsDict() as Any)
+        let dropboxString = dropboxObject.rawString()!
+        
+        // encrypt
+        let encryptionManager = EncryptionManager.init()
+        let encryptedString = encryptionManager.encrypt(dropboxString)
+        let encryptedFileData = encryptedString.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+        
+        
+        if let client = DropboxClientsManager.authorizedClient {
+        
+        _ = client.files.upload(path: "/db.json.enc", mode: Files.WriteMode.overwrite, input: encryptedFileData)
+            .response { response, error in
+                if response != nil {
+                    print("success upload")
+                    
+                    // show success
+                } else if let error = error {
+                    print(error)
+                    
+                    // show error
+                }
+            }
+            .progress { progressData in
+                //print(progressData)
+            }
+        }
     }
     
     @IBAction func dropboxAction(_ sender: AnyObject?) {

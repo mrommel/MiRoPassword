@@ -12,4 +12,13 @@ extension PasswordItem {
     
     static let entityName = "PasswordItem"    
     
+    func toDict() -> Dictionary<String, AnyObject> {
+        return [
+            "name": self.name as AnyObject,
+            "username": self.username as AnyObject,
+            "password": self.password as AnyObject,
+            "hint": self.hint as AnyObject,
+            "modified": self.modified as AnyObject
+        ]
+    }
 }

@@ -69,6 +69,20 @@ class PasswordItemManager : NSObject {
         return try! managedObjectContext.fetch(request)
     }
     
+    func getPasswordItemsDict() -> Dictionary<String, AnyObject> {
+    
+        var dict: Dictionary<String, AnyObject> = [:]
+        var itemArr = [Dictionary<String, AnyObject>]()
+        
+        for passwordItem in self.getPasswordItems() {
+            itemArr.append(passwordItem.toDict())
+        }
+        
+        dict["items"] = itemArr as AnyObject?
+    
+        return dict
+    }
+    
     func deletePasswordItem(withName name: String) {
         if let passwordItem = self.getPasswordItem(withName: name) {
             self.managedObjectContext.delete(passwordItem)
