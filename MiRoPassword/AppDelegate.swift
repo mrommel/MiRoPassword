@@ -8,6 +8,7 @@
 
 import Cocoa
 import EncryptedCoreData
+import SwiftyDropbox
 
 enum EncryptionError: Error {
     case WrongPassword
@@ -22,6 +23,38 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        DropboxClientsManager.setupWithAppKeyDesktop("vcdg1yh8jk9fzq6")
+        
+        NSAppleEventManager.shared().setEventHandler(self,
+                                                     andSelector: #selector(handleGetURLEvent),
+                                                     forEventClass: AEEventClass(kInternetEventClass),
+                                                     andEventID: AEEventID(kAEGetURL))
+    }
+    
+    func handleGetURLEvent(_ event: NSAppleEventDescriptor?, replyEvent: NSAppleEventDescriptor?) {
+        
+        if let aeEventDescriptor = event?.paramDescriptor(forKeyword: AEKeyword(keyDirectObject)) {
+            if let urlStr = aeEventDescriptor.stringValue {
+                let url = URL(string: urlStr)!
+                if let authResult = DropboxClientsManager.handleRedirectURL(url) {
+                    switch authResult {
+                    case .success(let token):
+                        print("Success! User is logged into Dropbox with token")
+                        
+                        // store token in encrypted db
+                        let context = self.managedObjectContext
+                        let passwordItemManager = PasswordItemManager.init(managedObjectContext: context)
+                        
+                        _ = passwordItemManager.createPasswordItem(withName: PasswordItemManager.dropboxToken, username: token.uid, password: token.accessToken, andHint: token.description)
+                        
+                    case .cancel:
+                        print("Authorization flow was manually canceled by user!")
+                    case .error(_, let description):
+                        print("Error: \(description)")
+                    }
+                }
+            }
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -78,7 +111,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         do {
             let properties = try self.applicationDocumentsDirectory.resourceValues(forKeys: [URLResourceKey.isDirectoryKey])
             if !properties.isDirectory! {
-                //failureReason = "Expected a folder to store application data, found a file \(self.applicationDocumentsDirectory.path)."
                 throw EncryptionError.FolderIsFile
             }
         } catch  {
@@ -98,6 +130,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var coordinator: NSPersistentStoreCoordinator? = nil
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("MiRoPassword.sqlite")
+        //print("url of db: \(url)")
+        
         do {
             //try coordinator!.addPersistentStore(ofType: NSXMLStoreType, configurationName: nil, at: url, options: nil)
             

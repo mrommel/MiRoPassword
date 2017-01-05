@@ -774,8 +774,8 @@
             <objects>
                 <customObject id="gmI-eZ-Ota" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ItemsViewController" id="mSt-2v-nt6" customClass="ItemsViewController" customModule="MiRoPassword" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="I3e-c0-T3p">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="295"/>
+                    <view key="view" id="I3e-c0-T3p">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="319"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-jl-WQr">
@@ -795,7 +795,7 @@
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
                                                         <tableColumn identifier="NameCellID" width="459" minWidth="40" maxWidth="1000" id="Ggc-uc-jS8">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="NameCellID">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -858,7 +858,7 @@
                                         </tableHeaderView>
                                     </scrollView>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylr-A1-tvF">
-                                        <rect key="frame" x="0.0" y="24" width="252" height="21"/>
+                                        <rect key="frame" x="0.0" y="24" width="463" height="21"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7tI-DQ-Mjc">
                                                 <rect key="frame" x="-6" y="-7" width="126" height="32"/>
@@ -888,8 +888,30 @@
                                                     <action selector="closeAction:" target="mSt-2v-nt6" id="XhV-HG-bOd"/>
                                                 </connections>
                                             </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-dm-TjA">
+                                                <rect key="frame" x="254" y="-7" width="149" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Link with Dropbox" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ea0-hw-KW8">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="dropboxAction:" target="mSt-2v-nt6" id="Iu4-tP-aVL"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4h-ia-Ke3">
+                                                <rect key="frame" x="399" y="-7" width="70" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Sync" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="igA-Un-zr4">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="syncAction:" target="mSt-2v-nt6" id="pnb-iw-y0Y"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
@@ -898,11 +920,13 @@
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
                                     <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cd9-Tf-rYF">
                                         <rect key="frame" x="0.0" y="-2" width="464" height="18"/>
-                                        <levelIndicatorCell key="cell" alignment="left" doubleValue="10" maxValue="10" warningValue="2" criticalValue="1" numberOfMajorTickMarks="5" id="t8d-01-xW5"/>
+                                        <levelIndicatorCell key="cell" alignment="left" doubleValue="100" maxValue="100" warningValue="20" criticalValue="10" numberOfMajorTickMarks="10" id="t8d-01-xW5"/>
                                     </levelIndicator>
                                 </subviews>
                                 <constraints>
@@ -928,8 +952,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dropboxButton" destination="DS8-dm-TjA" id="IG7-xP-dUe"/>
                         <outlet property="idleProgress" destination="Cd9-Tf-rYF" id="0IV-kp-o3E"/>
                         <outlet property="statusLabel" destination="Bqh-Wh-dzP" id="fzF-db-S2s"/>
+                        <outlet property="syncButton" destination="h4h-ia-Ke3" id="zV1-QT-MOy"/>
                     </connections>
                 </viewController>
             </objects>

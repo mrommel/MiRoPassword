@@ -7,15 +7,18 @@
 //
 
 import Cocoa
+import SwiftyDropbox
 
 class ItemsViewController: NSViewController {
     
     var idleTimer: Timer?
-    var idleCounter: Int32 = 10
+    var idleCounter: Int32 = 100
     
     @IBOutlet weak var tableView: NSTableView?
     @IBOutlet weak var statusLabel: NSTextField?
     @IBOutlet weak var idleProgress: NSLevelIndicator?
+    @IBOutlet weak var dropboxButton: NSButton?
+    @IBOutlet weak var syncButton: NSButton?
     
     var passwordItems: [PasswordItem]? = []
     var passwordItemManager: PasswordItemManager?
@@ -27,8 +30,43 @@ class ItemsViewController: NSViewController {
         let context = self.appDelegate.managedObjectContext
         self.passwordItemManager = PasswordItemManager.init(managedObjectContext: context)
         
+        if let dropboxToken = self.passwordItemManager?.getPasswordItem(withName: PasswordItemManager.dropboxToken) {
+            
+            DropboxClientsManager.reauthorizeClient(dropboxToken.username!)
+            
+            // Check if the user is logged in
+            // If so, try to load dropbox file
+            if let client = DropboxClientsManager.authorizedClient {
+                
+                self.syncButton?.isEnabled = true
+                self.dropboxButton?.title = "Unlink Dropbox"
+                
+                // List contents of app folder
+                _ = client.files.listFolder(path: "").response { response, error in
+                    if let result = response {
+                        print("Folder contents:")
+                        for entry in result.entries {
+                            print(entry.name)
+                            
+                            // Check that file is an encrypted db (by file extension)
+                            if entry.name.hasSuffix(".enc") {
+                                //self.filenames?.append(entry.name)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         self.idleTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ItemsViewController.updateCounter), userInfo: nil, repeats: true)
-        self.idleProgress?.intValue = 10
+        self.idleProgress?.intValue = 100
+        
+        // test
+        print("raw: lorem ipsom")
+        let encryptionManager = EncryptionManager.init()
+        let txt = encryptionManager.encrypt("lorem ipsom")
+        let txt2 = encryptionManager.decrypt(txt)
+        print("decrypted: \(txt2)")
         
         self.reloadPasswordList()
     }
@@ -51,20 +89,60 @@ class ItemsViewController: NSViewController {
         self.tableView?.reloadData()
     }
     
+    func resetCounter() {
+        self.idleCounter = 100
+        self.idleProgress?.intValue = self.idleCounter
+    }
+    
     @IBAction func doubleClickAction(_ sender: AnyObject?) {
         print("click: ")
         
-        self.idleCounter = 10
-        self.idleProgress?.intValue = self.idleCounter
+        self.resetCounter()
+    }
+    
+    @IBAction func syncAction(_ sender: AnyObject?) {
+        print("sync: ")
+        
+        self.resetCounter()
+    }
+    
+    @IBAction func dropboxAction(_ sender: AnyObject?) {
+        // Check if the user is logged in
+        // If so, try to load dropbox file
+        if DropboxClientsManager.authorizedClient != nil {
+            
+            print("unlink dropbox: ")
+            
+            self.resetCounter()
+            
+            DropboxClientsManager.unlinkClients()
+            
+            let context = self.appDelegate.managedObjectContext
+            self.passwordItemManager = PasswordItemManager.init(managedObjectContext: context)
+            
+            if (self.passwordItemManager?.getPasswordItem(withName: PasswordItemManager.dropboxToken)) != nil {
+                self.passwordItemManager?.deletePasswordItem(withName: PasswordItemManager.dropboxToken)
+            }
+            
+        } else {
+            print("link dropbox: ")
+            
+            self.resetCounter()
+            
+            DropboxClientsManager.authorizeFromController(sharedWorkspace: NSWorkspace.shared(),
+                                                          controller: self,
+                                                          openURL: { (url: URL) -> Void in
+                                                            NSWorkspace.shared().open(url)
+            })
+        }
     }
     
     @IBAction func addPasswordAction(_ sender: AnyObject?) {
         print("add: ")
         
-        self.idleCounter = 10
-        self.idleProgress?.intValue = self.idleCounter
+        self.resetCounter()
         
-        self.passwordItemManager?.createPasswordItem(withName: "abc")
+        _ = self.passwordItemManager?.createPasswordItem(withName: "abc", username: "def", password: "pwd", andHint: "hint")
         
         self.reloadPasswordList()
     }
@@ -83,7 +161,6 @@ extension ItemsViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return self.passwordItems?.count ?? 0
     }
-    
 }
 
 extension ItemsViewController: NSTableViewDelegate {

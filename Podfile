@@ -8,6 +8,7 @@ use_frameworks!
 target 'MiRoPassword' do
   
 	pod 'EncryptedCoreData', :git => 'https://github.com/project-imas/encrypted-core-data.git'
-  
+    pod 'SwiftyDropbox'
+    pod 'CryptoSwift'
 
 end

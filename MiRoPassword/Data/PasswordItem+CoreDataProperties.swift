@@ -21,5 +21,6 @@ extension PasswordItem {
     @NSManaged public var name: String?
     @NSManaged public var password: String?
     @NSManaged public var username: String?
+    @NSManaged public var modified: Int64
 
 }

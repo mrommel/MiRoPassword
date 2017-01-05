@@ -19,6 +19,8 @@
 		1A69C5401E1D16E100117D0B /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C53F1E1D16E100117D0B /* ItemsViewController.swift */; };
 		1A69C5421E1D35CC00117D0B /* PasswordItem+CoreDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C5411E1D35CC00117D0B /* PasswordItem+CoreDataAccess.swift */; };
 		1A69C5451E1D435A00117D0B /* PasswordItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C5441E1D435A00117D0B /* PasswordItemManager.swift */; };
+		1A69C5471E1DA4B600117D0B /* EncryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C5461E1DA4B600117D0B /* EncryptionManager.swift */; };
+		1A69C5491E1DADD700117D0B /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C5481E1DADD700117D0B /* String+Utils.swift */; };
 		6088FD212623312319DB81ED /* Pods_MiRoPassword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6777C273ECBA0584280D6BE3 /* Pods_MiRoPassword.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		1A69C53F1E1D16E100117D0B /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		1A69C5411E1D35CC00117D0B /* PasswordItem+CoreDataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PasswordItem+CoreDataAccess.swift"; path = "Data/PasswordItem+CoreDataAccess.swift"; sourceTree = "<group>"; };
 		1A69C5441E1D435A00117D0B /* PasswordItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordItemManager.swift; path = Manager/PasswordItemManager.swift; sourceTree = "<group>"; };
+		1A69C5461E1DA4B600117D0B /* EncryptionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptionManager.swift; path = Manager/EncryptionManager.swift; sourceTree = "<group>"; };
+		1A69C5481E1DADD700117D0B /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		6777C273ECBA0584280D6BE3 /* Pods_MiRoPassword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiRoPassword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83EABB439A4126585A16BD0 /* Pods-MiRoPassword.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiRoPassword.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiRoPassword/Pods-MiRoPassword.debug.xcconfig"; sourceTree = "<group>"; };
 		FE84955D5641383FEE2DA07B /* Pods-MiRoPassword.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiRoPassword.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiRoPassword/Pods-MiRoPassword.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				1A69C53D1E1CFEEE00117D0B /* NSViewController+AppDelegate.swift */,
+				1A69C5481E1DADD700117D0B /* String+Utils.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				1A69C5441E1D435A00117D0B /* PasswordItemManager.swift */,
+				1A69C5461E1DA4B600117D0B /* EncryptionManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A69C5491E1DADD700117D0B /* String+Utils.swift in Sources */,
 				1A59798B1E166110006C68CF /* LoginViewController.swift in Sources */,
 				1A5979891E166110006C68CF /* AppDelegate.swift in Sources */,
 				1A59798E1E166110006C68CF /* MiRoPassword.xcdatamodeld in Sources */,
@@ -276,6 +283,7 @@
 				1A69C5371E1C541F00117D0B /* PasswordItem+CoreDataClass.swift in Sources */,
 				1A69C5401E1D16E100117D0B /* ItemsViewController.swift in Sources */,
 				1A69C53E1E1CFEEE00117D0B /* NSViewController+AppDelegate.swift in Sources */,
+				1A69C5471E1DA4B600117D0B /* EncryptionManager.swift in Sources */,
 				1A69C5381E1C541F00117D0B /* PasswordItem+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
